@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilhetinhos da Fé — Bilhetinhos Bíblicos Digitais para Imprimir</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2401943486958887');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2401943486958887&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== VARIÁVEIS ===== */
+    :root {
+      --bg: #FDF8F0;
+      --bg-card: #FFFFFF;
+      --gold: #C9932A;
+      --gold-light: #F5E6C8;
+      --brown: #2C1810;
+      --brown-mid: #6B3F2A;
+      --green: #4A6741;
+      --green-light: #DAF0D6;
+      --cream-border: #E8DCC8;
+      --terra: #B5512A;
+      --terra-light: #FBE9E0;
+      --sage-bg: #EDF2EC;
+      --shadow-warm: 0 4px 24px rgba(201, 147, 42, 0.15);
+      --shadow-warm-lg: 0 8px 40px rgba(201, 147, 42, 0.22);
+      --shadow-green: 0 4px 24px rgba(74, 103, 65, 0.12);
+      --shadow-terra: 0 4px 24px rgba(181, 81, 42, 0.12);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bg);
+      color: var(--brown);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23E8DCC8' opacity='0.5'/%3E%3C/svg%3E");
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== FADE-IN ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== PULSE ===== */
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 4px 24px rgba(201, 147, 42, 0.3); }
+      50% { box-shadow: 0 4px 40px rgba(201, 147, 42, 0.65), 0 0 0 6px rgba(201, 147, 42, 0.12); }
+    }
+    .btn-pulse { animation: pulse-gold 2.4s ease-in-out infinite; }
+
+    /* ===== BOTÕES ===== */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: var(--shadow-warm);
+    }
+    .btn-primary:hover {
+      background: #b8841f;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-warm-lg);
+    }
+    .btn-outline {
+      background: #fff;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+    .btn-lg {
+      padding: 20px 40px;
+      font-size: 18px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+      display: inline-block;
+      background: var(--gold-light);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-dark { background: var(--gold); color: #fff; }
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-terra { background: var(--terra-light); color: var(--terra); }
+
+    /* ===== LAYOUT ===== */
+    .section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .container-sm { max-width: 680px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--brown);
+    }
+
+    /* ===== PLACEHOLDER ===== */
+    .product-placeholder {
+      background: var(--gold-light);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--brown-mid);
+      font-size: 14px;
+      border: 1.5px dashed var(--cream-border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .check-icon { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+    /* ===== 1. TOP BAR ===== */
+    #top-bar {
+      background: var(--gold);
+      color: #fff;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ===== 2. NAV ===== */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--cream-border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .nav-cta { padding: 10px 22px; font-size: 14px; border-radius: 8px; }
+
+    /* ===== 3. HERO ===== */
+    #hero { background: var(--bg); padding: 80px 24px 72px; }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-left { display: flex; flex-direction: column; gap: 24px; }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .hero-sub { font-size: 18px; color: var(--brown-mid); line-height: 1.7; }
+    .hero-cta-wrap { display: flex; flex-direction: column; gap: 10px; }
+    .hero-cta-note { font-size: 12px; color: var(--brown-mid); font-weight: 300; }
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--brown-mid);
+    }
+    .hero-social-proof svg { color: var(--gold); }
+
+    .hero-visual {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-warm-lg);
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .hero-visual:hover img { transform: scale(1.02); }
+    .hero-img-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--brown-mid);
+      opacity: 0.65;
+      margin-top: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-weight: 300;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(44, 24, 16, 0.94);
+      overflow-y: auto;
+      padding: 70px 16px 40px;
+    }
+    #lightbox.open { display: block; }
+    #lightbox-img {
+      width: min(96vw, 2000px);
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      cursor: default;
+      display: block;
+      margin: 0 auto;
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      z-index: 1000;
+    }
+    #lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+    /* ===== 4. IDENTIFICAÇÃO ===== */
+    #identificacao { background: var(--bg); padding: 80px 24px; }
+    .identificacao-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.3;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .identificacao-text {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--brown-mid);
+      margin-bottom: 20px;
+    }
+
+    /* ===== 5. PRODUTOS ===== */
+    #produtos { background: var(--bg-card); padding: 80px 24px; }
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .produto-card {
+      background: var(--bg);
+      border: 1px solid var(--cream-border);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .produto-card:hover {
+      box-shadow: var(--shadow-warm-lg);
+      transform: translateY(-4px);
+    }
+    .produto-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .produto-card-desc { font-size: 15px; color: var(--brown-mid); line-height: 1.7; }
+
+    /* ===== 6. GALERIA (VÍDEO 9:16) ===== */
+    #galeria { background: var(--sage-bg); padding: 80px 24px; }
+    .video-wrapper {
+      max-width: 380px;
+      margin: 0 auto 28px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(74, 103, 65, 0.2);
+      border: 1px solid rgba(74, 103, 65, 0.15);
+      aspect-ratio: 9 / 16;
+      position: relative;
+      background: var(--brown);
+    }
+    .video-wrapper video,
+    .video-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .galeria-note { text-align: center; font-size: 13px; color: var(--brown-mid); font-weight: 300; }
+
+    /* ===== PROPÓSITO: CARIDADE ===== */
+    #proposito {
+      background: var(--sage-bg);
+      padding: 80px 24px;
+      border-top: 1px solid rgba(74, 103, 65, 0.15);
+      border-bottom: 1px solid rgba(74, 103, 65, 0.15);
+    }
+    .proposito-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .proposito-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .proposito-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: var(--brown);
+    }
+    .proposito-text {
+      font-size: 17px;
+      color: var(--brown-mid);
+      line-height: 1.85;
+      margin-bottom: 40px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .proposito-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .proposito-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(74, 103, 65, 0.2);
+      border-radius: 12px;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-green);
+      transition: transform 0.25s ease;
+    }
+    .proposito-item:hover { transform: translateY(-3px); }
+    .proposito-item-title { font-weight: 700; font-size: 15px; color: var(--green); }
+    .proposito-item-desc { font-size: 13px; color: var(--brown-mid); line-height: 1.65; font-weight: 300; }
+
+    /* ===== 7. PARA QUEM ===== */
+    #para-quem { background: var(--bg-card); padding: 80px 24px; }
+    .para-quem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .para-quem-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 24px 16px;
+      background: var(--bg);
+      border: 1px solid var(--cream-border);
+      border-radius: 12px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .para-quem-item:hover { transform: translateY(-3px); }
+    .para-quem-item.gold:hover  { box-shadow: var(--shadow-warm); }
+    .para-quem-item.verde:hover { box-shadow: var(--shadow-green); }
+    .para-quem-item.terra:hover { box-shadow: var(--shadow-terra); }
+    .para-quem-item-title { font-weight: 700; font-size: 15px; }
+    .para-quem-item-desc { font-size: 13px; color: var(--brown-mid); line-height: 1.6; font-weight: 300; }
+
+    /* ===== 8. COMO FUNCIONA ===== */
+    #como-funciona { background: var(--bg); padding: 80px 24px; }
+    .passos-row {
+      display: flex;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .passos-row::before {
+      content: '';
+      position: absolute;
+      top: 52px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      border-top: 2px dashed var(--cream-border);
+      z-index: 0;
+    }
+    .passo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .passo-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .passo-num-gold  { color: var(--gold-light); }
+    .passo-num-green { color: #C8E6C4; }
+    .passo-num-terra { color: #F5CFC0; }
+    .passo-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .passo-desc { font-size: 14px; color: var(--brown-mid); line-height: 1.65; font-weight: 300; }
+
+    /* ===== 9. OFERTA ===== */
+    #oferta { background: var(--bg-card); padding: 80px 24px; }
+    .preco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 820px;
+      margin: 0 auto 24px;
+      align-items: start;
+    }
+    .preco-card {
+      border-radius: 12px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .preco-card:hover { transform: translateY(-4px); }
+    .preco-card-entry {
+      background: var(--bg);
+      border: 1px solid var(--cream-border);
+      box-shadow: var(--shadow-warm);
+    }
+    .preco-card-entry:hover { box-shadow: var(--shadow-warm-lg); }
+    .preco-card-main {
+      background: var(--gold-light);
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-warm-lg);
+    }
+    .preco-card-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .preco-badge-wrap { text-align: center; margin-bottom: -4px; }
+    .preco-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+    .preco-desc { font-size: 14px; color: var(--brown-mid); line-height: 1.5; }
+    .preco-old { font-size: 16px; color: var(--brown-mid); opacity: 0.55; text-decoration: line-through; }
+    .preco-atual { font-family: 'Playfair Display', serif; color: var(--gold); line-height: 1; }
+    .preco-atual-entry { font-size: 42px; }
+    .preco-atual-main { font-size: 52px; }
+    .preco-footer-note { text-align: center; font-size: 13px; color: var(--brown-mid); font-weight: 300; max-width: 820px; margin: 0 auto; }
+
+    /* ===== COPY DOS CARDS DE PREÇO ===== */
+    .preco-intro-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      opacity: 0.75;
+    }
+    .preco-intro-tag-gold { color: var(--gold); opacity: 1; }
+    .preco-body {
+      font-size: 14px;
+      color: var(--brown-mid);
+      line-height: 1.7;
+    }
+    .preco-upgrade-hint {
+      font-size: 12px;
+      color: var(--brown-mid);
+      line-height: 1.55;
+      border-top: 1px solid var(--cream-border);
+      padding-top: 14px;
+      opacity: 0.82;
+    }
+    .preco-saving-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .preco-por-item {
+      font-size: 12px;
+      color: var(--brown-mid);
+      font-weight: 300;
+      margin-top: 6px;
+      line-height: 1.55;
+    }
+    .preco-trust-line {
+      font-size: 12px;
+      color: var(--brown-mid);
+      text-align: center;
+      opacity: 0.75;
+      padding-top: 4px;
+    }
+
+    /* ===== 10. DEPOIMENTOS ===== */
+    #depoimentos { background: var(--bg); padding: 80px 24px; }
+    .depo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .depo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--cream-border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--shadow-warm);
+    }
+    .depo-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+    .depo-text { font-size: 15px; line-height: 1.75; font-style: italic; flex: 1; }
+    .depo-divider { border: none; border-top: 1px solid var(--cream-border); }
+    .depo-footer { display: flex; align-items: center; gap: 12px; }
+    .depo-foto {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--cream-border);
+      display: block;
+    }
+    .depo-name { font-weight: 700; font-size: 14px; }
+    .depo-city { font-size: 12px; color: var(--brown-mid); font-weight: 300; }
+
+    /* ===== 11. GARANTIA ===== */
+    #garantia {
+      background: var(--terra-light);
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(181, 81, 42, 0.15);
+      border-bottom: 1px solid rgba(181, 81, 42, 0.15);
+    }
+    .garantia-inner { max-width: 560px; margin: 0 auto; }
+    .garantia-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin: 20px 0 16px;
+    }
+    .garantia-text { font-size: 16px; color: var(--brown-mid); line-height: 1.8; }
+
+    /* ===== 12. FAQ ===== */
+    #faq { background: var(--bg); padding: 80px 24px; }
+    .faq-list { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--cream-border); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--brown);
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      color: var(--gold);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-answer-inner { padding: 0 0 22px; font-size: 15px; color: var(--brown-mid); line-height: 1.75; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ===== 13. CTA FINAL ===== */
+    #cta-final {
+      background: var(--gold-light);
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .cta-final-inner { max-width: 640px; margin: 0 auto; }
+    .cta-final-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .cta-final-text { font-size: 16px; color: var(--brown-mid); line-height: 1.8; margin-bottom: 36px; }
+    .cta-final-note { font-size: 12px; color: var(--brown-mid); margin-top: 14px; font-weight: 300; }
+
+    /* ===== 14. FOOTER ===== */
+    footer {
+      background: var(--brown);
+      color: #E8DCC8;
+      padding: 40px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff; }
+    .footer-legal { font-size: 13px; opacity: 0.7; line-height: 1.6; max-width: 560px; margin: 0 auto; font-weight: 300; }
+    .footer-copy { font-size: 12px; opacity: 0.5; }
+
+    /* ===== STICKY CTA MOBILE ===== */
+    #sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--bg-card);
+      border-top: 1px solid var(--cream-border);
+      padding: 12px 20px;
+      display: none;
+      box-shadow: 0 -4px 24px rgba(44, 24, 16, 0.1);
+    }
+    #sticky-cta .btn { width: 100%; max-width: 100%; padding: 16px; font-size: 16px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .section { padding: 56px 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-headline { font-size: 36px; }
+      .hero-sub { font-size: 16px; }
+      .section-title { font-size: 28px; margin-bottom: 32px; }
+      .identificacao-title { font-size: 26px; }
+      .produtos-grid { grid-template-columns: 1fr; }
+      .para-quem-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .passos-row { flex-direction: column; gap: 32px; }
+      .passos-row::before { display: none; }
+      .passo { align-items: flex-start; text-align: left; padding: 0; }
+      .preco-grid { grid-template-columns: 1fr; }
+      .depo-grid { grid-template-columns: 1fr; }
+      .cta-final-title { font-size: 28px; }
+      .proposito-grid { grid-template-columns: 1fr; }
+      .proposito-title { font-size: 28px; }
+      .video-wrapper { max-width: 100%; }
+      #sticky-cta { display: block; }
+      footer { padding-bottom: 84px; }
+    }
+
+    @media (max-width: 480px) {
+      .para-quem-grid { grid-template-columns: 1fr; }
+      .hero-headline { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. BARRA DE TOPO -->
+  <div id="top-bar">
+    Mais de 800 famílias já estão semeando a Palavra com esses bilhetinhos &nbsp;&middot;&nbsp; Arquivo PDF &nbsp;&middot;&nbsp; Receba em minutos &nbsp;&middot;&nbsp; Imprima para sempre
+  </div>
+
+  <!-- 2. NAVEGAÇÃO -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">Bilhetinhos da Fé</span>
+      <a href="#oferta" class="btn btn-primary nav-cta">Quero meu kit</a>
+    </div>
+  </nav>
+
+  <!-- 3. HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-left fade-in">
+        <div>
+          <span class="badge">PDF Digital &nbsp;&middot;&nbsp; Imprima para sempre</span>
+        </div>
+        <h1 class="hero-headline">Espalhe a Palavra de um jeito que ninguém consegue ignorar</h1>
+        <p class="hero-sub">+160 bilhetinhos bíblicos em formato 3D e 18 modelos da Mão de Jesus prontos para imprimir, montar e entregar.</p>
+        <div class="hero-cta-wrap">
+          <a href="#oferta" class="btn btn-primary btn-lg btn-pulse">Quero meus bilhetinhos &mdash; R$&nbsp;47,90</a>
+          <span class="hero-cta-note">PDF digital &nbsp;&middot;&nbsp; Entrega imediata &nbsp;&middot;&nbsp; Garantia de 7 dias</span>
+        </div>
+        <div class="hero-social-proof">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          Mais de 800 famílias já usam
+        </div>
+      </div>
+
+      <div class="hero-right fade-in" style="transition-delay:0.15s">
+        <div class="hero-visual">
+          <img src="hero.png" alt="Bilhetinhos da Fé — kit completo" id="hero-img">
+        </div>
+        <p class="hero-img-hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          Clique para ampliar
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. IDENTIFICAÇÃO -->
+  <section id="identificacao" class="section">
+    <div class="container-sm">
+      <h2 class="identificacao-title fade-in">Você quer semear a Palavra, mas nem sempre sabe como começar?</h2>
+      <p class="identificacao-text fade-in">O desejo de compartilhar o Evangelho está no coração de todo cristão. Mas na correria do dia a dia, o momento certo parece nunca chegar &mdash; faltam as palavras certas, a coragem, ou simplesmente algo concreto para colocar nas mãos de quem você ama.</p>
+      <p class="identificacao-text fade-in">E se você tivesse algo tão bonito e inesperado que a pessoa mesma abrisse curiosa, sorrisse e ficasse com a mensagem de Deus guardada no coração?</p>
+    </div>
+  </section>
+
+  <!-- 5. OS PRODUTOS -->
+  <section id="produtos">
+    <div class="container">
+      <h2 class="section-title fade-in">Dois bilhetinhos. Uma missão.</h2>
+      <div class="produtos-grid">
+
+        <!-- Card 1: Bilhetinhos Bíblicos -->
+        <div class="produto-card fade-in">
+          <span class="badge">6 modelos exclusivos</span>
+          <h3 class="produto-card-title">Bilhetinhos Bíblicos 3D com Salmos</h3>
+          <p class="produto-card-desc">Parecem simples. Quando a pessoa abre, o bilhetinho se expande em 3D e revela uma mensagem poderosa dos Salmos escondida dentro.</p>
+          <ul class="checklist">
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>+160 bilhetinhos com Salmos</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>6 modelos diferentes e exclusivos</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Todos em formato 3D</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Apenas Salmos e mensagens bíblicas</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Prontos para imprimir, recortar e montar</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Perfeitos para lembrancinhas, igreja ou presentear</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Mão de Jesus -->
+        <div class="produto-card fade-in" style="transition-delay:0.12s">
+          <span class="badge badge-green">18 modelos prontos</span>
+          <h3 class="produto-card-title">Mão de Jesus</h3>
+          <p class="produto-card-desc">Uma cartinha dobrada que, ao abrir, revela dois braços em 3D fazendo um coração com uma mensagem poderosa de Deus dentro.</p>
+          <ul class="checklist">
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Espalha a Palavra de um jeito simples e especial</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Cada bilhetinho traz uma mensagem poderosa de Deus</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>18 modelos prontos para imprimir</li>
+            <li><span class="check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Tudo em PDF: é só imprimir e entregar</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. GALERIA (VÍDEO/GIF) -->
+  <section id="galeria" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Veja como fica na prática</h2>
+
+      <div class="video-wrapper fade-in">
+        <!-- video.mp4 deve estar na mesma pasta que este arquivo -->
+        <video src="video.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <p class="galeria-note fade-in">Imprima em casa ou em qualquer gráfica. Papel sulfite comum já funciona.</p>
+    </div>
+  </section>
+
+  <!-- 7. PARA QUEM É -->
+  <section id="para-quem">
+    <div class="container">
+      <h2 class="section-title fade-in">Para quem é esse kit?</h2>
+      <div class="para-quem-grid">
+
+        <div class="para-quem-item gold fade-in">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--gold)">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span class="para-quem-item-title">Mães e avós</span>
+          <span class="para-quem-item-desc">que querem plantar a fé nos filhos de um jeito bonito e concreto</span>
+        </div>
+
+        <div class="para-quem-item verde fade-in" style="transition-delay:0.08s">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--green)">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span class="para-quem-item-title">Líderes e obreiros</span>
+          <span class="para-quem-item-desc">que precisam de algo especial para distribuir em cultos e eventos</span>
+        </div>
+
+        <div class="para-quem-item terra fade-in" style="transition-delay:0.16s">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.8">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="para-quem-item-title">Professores de EBD</span>
+          <span class="para-quem-item-desc">que querem que as crianças guardem a lembrança e a mensagem</span>
+        </div>
+
+        <div class="para-quem-item verde fade-in" style="transition-delay:0.24s">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          </svg>
+          <span class="para-quem-item-title">Evangelistas de rua</span>
+          <span class="para-quem-item-desc">que querem deixar algo que as pessoas carregam, não descartam</span>
+        </div>
+
+        <div class="para-quem-item terra fade-in" style="transition-delay:0.32s">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.8">
+            <polyline points="20 12 20 22 4 22 4 12"/>
+            <rect x="2" y="7" width="20" height="5"/>
+            <line x1="12" y1="22" x2="12" y2="7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+          </svg>
+          <span class="para-quem-item-title">Quem quer presentear</span>
+          <span class="para-quem-item-desc">com significado sem precisar gastar muito</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. COMO FUNCIONA -->
+  <section id="como-funciona" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Três passos. Sem complicação.</h2>
+      <div class="passos-row">
+        <div class="passo fade-in">
+          <span class="passo-num passo-num-gold">1</span>
+          <span class="passo-title">Compre e receba o PDF</span>
+          <span class="passo-desc">O arquivo chega no seu e-mail em minutos, logo após o pagamento.</span>
+        </div>
+        <div class="passo fade-in" style="transition-delay:0.12s">
+          <span class="passo-num passo-num-green">2</span>
+          <span class="passo-title">Imprima onde quiser</span>
+          <span class="passo-desc">Em casa com impressora colorida comum ou em qualquer gráfica.</span>
+        </div>
+        <div class="passo fade-in" style="transition-delay:0.24s">
+          <span class="passo-num passo-num-terra">3</span>
+          <span class="passo-title">Monte e distribua</span>
+          <span class="passo-desc">Instruções visuais incluídas. Monte em 2 minutos. Imprima para sempre.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPÓSITO: CARIDADE E PROJETOS DA IGREJA -->
+  <!-- PERSONALIZAR: edite os três itens abaixo com os projetos específicos da sua igreja -->
+  <section id="proposito">
+    <div class="container">
+      <div class="proposito-inner fade-in">
+
+        <div class="proposito-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Compra com propósito
+        </div>
+
+        <h2 class="proposito-title">Todo o dinheiro arrecadado vai para a obra de Deus</h2>
+        <p class="proposito-text">100% do valor investido aqui é revertido para caridade e projetos da nossa igreja. Você não está só comprando um material de evangelização — está semeando diretamente em vidas e comunidades que precisam do amor de Cristo.</p>
+
+        <div class="proposito-grid">
+
+          <div class="proposito-item">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span class="proposito-item-title">Ações sociais</span>
+            <span class="proposito-item-desc">Apoio a famílias em vulnerabilidade, distribuição de alimentos e assistência à comunidade local</span>
+          </div>
+
+          <div class="proposito-item">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+            </svg>
+            <span class="proposito-item-title">Evangelização</span>
+            <span class="proposito-item-desc">Missões, materiais e iniciativas para levar o Evangelho a quem ainda não o conhece</span>
+          </div>
+
+          <div class="proposito-item">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span class="proposito-item-title">Projetos da Igreja</span>
+            <span class="proposito-item-desc">Investimento direto nas atividades, infraestrutura e ministérios da nossa congregação</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. OFERTA -->
+  <section id="oferta">
+    <div class="container">
+      <h2 class="section-title fade-in">Escolha o seu pack</h2>
+      <div class="preco-grid">
+
+        <div class="preco-card preco-card-entry fade-in">
+          <span class="preco-intro-tag">Para começar</span>
+          <div class="preco-card-wrap">
+            <span class="preco-name">Pack Bíblico</span>
+            <p class="preco-body">Ideal para quem quer dar o primeiro passo e já começar a distribuir ainda essa semana. Simples de imprimir, fácil de montar, impossível de ignorar.</p>
+          </div>
+          <ul class="checklist" style="font-size:14px; gap:8px">
+            <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>+160 bilhetinhos com versículos dos Salmos</li>
+            <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>6 modelos exclusivos em formato 3D</li>
+            <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Instruções visuais passo a passo incluídas</li>
+            <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Imprima quantas vezes quiser, para sempre</li>
+          </ul>
+          <div>
+            <div class="preco-old">R$ 37,90</div>
+            <div class="preco-atual preco-atual-entry">R$ 19,90</div>
+          </div>
+          <a href="#" class="btn btn-outline" style="width:100%;text-align:center">Quero o Pack Bíblico</a>
+          <p class="preco-upgrade-hint">&#8594; Por apenas R$&nbsp;28 a mais, o Pack Completo inclui também os 18 modelos da Mão de Jesus</p>
+        </div>
+
+        <div class="fade-in" style="transition-delay:0.12s; display:flex; flex-direction:column; gap:8px">
+          <div class="preco-badge-wrap">
+            <span class="badge badge-dark">&#9733;&nbsp; MAIS ESCOLHIDO &nbsp;&#9733;</span>
+          </div>
+          <div class="preco-card preco-card-main">
+            <span class="preco-intro-tag preco-intro-tag-gold">Melhor custo-benefício</span>
+            <div class="preco-card-wrap">
+              <span class="preco-name">Pack Evangelizador Completo</span>
+              <p class="preco-body">Dois kits distintos para cobrir qualquer situação. Do culto de domingo às ruas, da escola dominical ao presente para quem você ama. Uma compra. Uma vida inteira de evangelização.</p>
+            </div>
+            <ul class="checklist" style="font-size:14px; gap:8px">
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>+160 Bilhetinhos Bíblicos 3D com Salmos</li>
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>18 modelos exclusivos da Mão de Jesus</li>
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Funciona com crianças, jovens e adultos</li>
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Perfeito para cultos, ruas, presentes e eventos</li>
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Dois modelos únicos — o dobro de impacto</li>
+              <li><span class="check-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Imprima hoje ou daqui a um ano — o arquivo é seu</li>
+            </ul>
+            <div>
+              <div class="preco-saving-badge">Você economiza R$ 40,00</div>
+              <div class="preco-old">De R$ 87,90</div>
+              <div class="preco-atual preco-atual-main">R$ 47,90</div>
+              <p class="preco-por-item">Sem limite de impressões. Seu arquivo para sempre.</p>
+            </div>
+            <a href="#" class="btn btn-primary btn-pulse" style="width:100%;text-align:center;padding:20px;font-size:17px">Garantir meu Pack Completo agora</a>
+            <p class="preco-trust-line">&#128274;&nbsp; Pagamento seguro &nbsp;&middot;&nbsp; PDF no e-mail em minutos &nbsp;&middot;&nbsp; 7 dias de garantia</p>
+          </div>
+        </div>
+
+      </div>
+      <p class="preco-footer-note fade-in" style="margin-top:28px">PDF digital &nbsp;&middot;&nbsp; Imprima quantas vezes quiser &nbsp;&middot;&nbsp; Garantia de 7 dias</p>
+    </div>
+  </section>
+
+  <!-- 10. DEPOIMENTOS -->
+  <section id="depoimentos" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Quem já está espalhando a Palavra</h2>
+      <div class="depo-grid">
+
+        <div class="depo-card fade-in">
+          <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="depo-text">"Distribuí os bilhetinhos bíblicos na escola dominical e as crianças ficaram encantadas. Cada uma queria mostrar pra mãe como abria em 3D. Foi impossível não se emocionar vendo a reação delas."</p>
+          <hr class="depo-divider">
+          <div class="depo-footer">
+            <!-- SUBSTITUIR: coloque a foto da Fernanda como "depo-fernanda.jpg" na pasta -->
+            <img src="depo-fernanda.jpg" alt="Fernanda Almeida" class="depo-foto">
+            <div>
+              <div class="depo-name">Fernanda Almeida</div>
+              <div class="depo-city">Porto Alegre, RS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depo-card fade-in" style="transition-delay:0.12s">
+          <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="depo-text">"Deixei um bilhetinho Mão de Jesus na mesa do meu colega de trabalho sem falar nada. No dia seguinte ele me procurou querendo saber mais sobre Jesus. Nunca imaginei que um papel pudesse abrir uma conversa assim."</p>
+          <hr class="depo-divider">
+          <div class="depo-footer">
+            <!-- SUBSTITUIR: coloque a foto do Marcos como "depo-marcos.jpg" na pasta -->
+            <img src="depo-marcos.jpg" alt="Marcos Teixeira" class="depo-foto">
+            <div>
+              <div class="depo-name">Marcos Teixeira</div>
+              <div class="depo-city">Belo Horizonte, MG</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depo-card fade-in" style="transition-delay:0.24s">
+          <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="depo-text">"Usei os bilhetinhos no acampamento de jovens e foi o momento mais marcante do evento. Todo mundo queria levar mais pra casa. Já pedi pra toda a liderança da nossa igreja baixar também."</p>
+          <hr class="depo-divider">
+          <div class="depo-footer">
+            <!-- SUBSTITUIR: coloque a foto da Pastora Sílvia como "depo-silvia.jpg" na pasta -->
+            <img src="depo-silvia.jpg" alt="Pastora Sílvia Rodrigues" class="depo-foto">
+            <div>
+              <div class="depo-name">Pastora Sílvia Rodrigues</div>
+              <div class="depo-city">São Paulo, SP</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. GARANTIA -->
+  <section id="garantia">
+    <div class="garantia-inner fade-in" style="padding:80px 24px;text-align:center">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--terra)" stroke-width="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10" stroke-width="2"/>
+      </svg>
+      <h2 class="garantia-title">Você não tem nada a perder.</h2>
+      <p class="garantia-text">Compre, baixe, imprima e teste. Se em 7 dias você não ficar satisfeita com o material por qualquer motivo, é só me chamar e eu devolvo tudo. Sem burocracia, sem perguntas.</p>
+    </div>
+  </section>
+
+  <!-- 12. FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Dúvidas frequentes</h2>
+      <div class="faq-list">
+
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            Preciso de impressora especial?
+            <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Não. Qualquer impressora colorida funciona. Ou leve o arquivo numa gráfica perto de você.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in" style="transition-delay:0.06s">
+          <button class="faq-question" aria-expanded="false">
+            Posso imprimir quantas vezes quiser?
+            <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sim. O arquivo é seu para sempre: imprima hoje, daqui a um mês, para um culto, para um acampamento, quando quiser.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in" style="transition-delay:0.12s">
+          <button class="faq-question" aria-expanded="false">
+            É difícil de montar?
+            <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Não. O próprio arquivo já traz o passo a passo com imagens. A maioria das pessoas monta na primeira tentativa.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in" style="transition-delay:0.18s">
+          <button class="faq-question" aria-expanded="false">
+            Posso vender os bilhetinhos já impressos?
+            <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sim. Você pode imprimir e vender fisicamente à vontade. O que não é permitido é compartilhar ou redistribuir o arquivo digital.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. CTA FINAL -->
+  <section id="cta-final">
+    <div class="cta-final-inner fade-in">
+      <h2 class="cta-final-title">Alguém ao seu redor está esperando uma razão para abrir o coração.</h2>
+      <p class="cta-final-text">Pode ser um colega de trabalho, um vizinho, um filho que se afastou, um desconhecido no ônibus. Um bilhetinho não salva, mas pode ser a semente que Deus usa para plantar algo eterno.</p>
+      <a href="#" class="btn btn-primary btn-lg btn-pulse" style="display:inline-block">Quero meu Pack Completo agora &mdash; R$&nbsp;47,90</a>
+      <p class="cta-final-note">Pagamento seguro &nbsp;&middot;&nbsp; PDF no seu e-mail em minutos &nbsp;&middot;&nbsp; Garantia de 7 dias</p>
+    </div>
+  </section>
+
+  <!-- 14. FOOTER -->
+  <footer>
+    <div class="footer-logo">Bilhetinhos da Fé</div>
+    <p class="footer-legal">Material digital para fins de evangelização e presente. Revenda do arquivo digital proibida.</p>
+    <p class="footer-copy">&copy; 2025 Bilhetinhos da Fé. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+    <button id="lightbox-close" aria-label="Fechar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="lightbox-img" alt="Bilhetinhos da Fé — ampliado">
+  </div>
+
+  <!-- STICKY CTA MOBILE -->
+  <div id="sticky-cta">
+    <a href="#oferta" class="btn btn-primary btn-pulse">Quero meu kit &mdash; R$&nbsp;47,90</a>
+  </div>
+
+  <script>
+    // Fade-in com IntersectionObserver e stagger
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => io.observe(el));
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Sticky CTA mobile: some quando chega na seção de preços
+    const stickyCta = document.getElementById('sticky-cta');
+    const oferta = document.getElementById('oferta');
+    if (oferta) {
+      stickyCta.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            stickyCta.style.transform = 'translateY(100%)';
+            stickyCta.style.opacity = '0';
+          } else {
+            stickyCta.style.transform = 'translateY(0)';
+            stickyCta.style.opacity = '1';
+          }
+        });
+      }, { threshold: 0.1 }).observe(oferta);
+    }
+
+    // Lightbox para imagem do hero
+    (function () {
+      const img = document.getElementById('hero-img');
+      const lb  = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbClose = document.getElementById('lightbox-close');
+      if (!img || !lb) return;
+      const open  = () => { lbImg.src = img.src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; };
+      const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+      img.addEventListener('click', open);
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+
+    // Scroll suave para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
