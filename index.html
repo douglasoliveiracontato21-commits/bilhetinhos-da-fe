@@ -720,6 +720,55 @@
     }
     #sticky-cta .btn { width: 100%; max-width: 100%; padding: 16px; font-size: 16px; }
 
+    /* ===== NOTIFICAÇÃO DE COMPRA ===== */
+    #compra-notif {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 300;
+      background: var(--bg-card);
+      border: 1px solid var(--cream-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 14px 38px 14px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-warm-lg);
+      width: 296px;
+      transform: translateX(calc(-100% - 32px));
+      transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    #compra-notif.show { transform: translateX(0); }
+    .notif-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .notif-body { flex: 1; min-width: 0; }
+    .notif-texto { font-size: 13px; color: var(--brown); line-height: 1.4; }
+    .notif-texto strong { font-weight: 700; }
+    .notif-sub { font-size: 11px; color: var(--brown-mid); margin-top: 3px; font-weight: 300; }
+    .notif-fechar {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 15px;
+      color: var(--brown-mid);
+      cursor: pointer;
+      opacity: 0.4;
+      padding: 2px 4px;
+      line-height: 1;
+    }
+    .notif-fechar:hover { opacity: 1; }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .section { padding: 56px 20px; }
@@ -741,6 +790,14 @@
       .video-wrapper { max-width: 100%; }
       #sticky-cta { display: block; }
       footer { padding-bottom: 84px; }
+      #compra-notif {
+        bottom: 76px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        transform: translateY(calc(100% + 100px));
+      }
+      #compra-notif.show { transform: translateY(0); }
     }
 
     @media (max-width: 480px) {
@@ -1175,6 +1232,22 @@
     <p class="footer-copy">&copy; 2025 Bilhetinhos da Fé. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Notificação de compra -->
+  <div id="compra-notif" role="status" aria-live="polite">
+    <div class="notif-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+    </div>
+    <div class="notif-body">
+      <p class="notif-texto"><strong id="notif-nome">Ana Lima</strong> acabou de adquirir</p>
+      <p class="notif-sub"><span id="notif-cidade">São Paulo, SP</span> &nbsp;·&nbsp; agora mesmo</p>
+    </div>
+    <button class="notif-fechar" aria-label="Fechar">&#x2715;</button>
+  </div>
+
   <!-- Lightbox -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
     <button id="lightbox-close" aria-label="Fechar">
@@ -1189,6 +1262,108 @@
   </div>
 
   <script>
+    // Notificação de compra em tempo real
+    (function () {
+      const compradores = [
+        { nome: 'Ana Lima',            cidade: 'São Paulo, SP' },
+        { nome: 'Mariana Costa',       cidade: 'Rio de Janeiro, RJ' },
+        { nome: 'Fernanda Oliveira',   cidade: 'Belo Horizonte, MG' },
+        { nome: 'Juliana Santos',      cidade: 'Curitiba, PR' },
+        { nome: 'Camila Ferreira',     cidade: 'Porto Alegre, RS' },
+        { nome: 'Beatriz Alves',       cidade: 'Salvador, BA' },
+        { nome: 'Letícia Souza',       cidade: 'Fortaleza, CE' },
+        { nome: 'Gabriela Rodrigues',  cidade: 'Manaus, AM' },
+        { nome: 'Isabela Martins',     cidade: 'Recife, PE' },
+        { nome: 'Carolina Pereira',    cidade: 'Brasília, DF' },
+        { nome: 'Amanda Silva',        cidade: 'Natal, RN' },
+        { nome: 'Priscila Carvalho',   cidade: 'Belém, PA' },
+        { nome: 'Renata Gomes',        cidade: 'Florianópolis, SC' },
+        { nome: 'Tatiana Ribeiro',     cidade: 'Goiânia, GO' },
+        { nome: 'Débora Lopes',        cidade: 'Maceió, AL' },
+        { nome: 'José Carlos Mendes',  cidade: 'João Pessoa, PB' },
+        { nome: 'Roberto Freitas',     cidade: 'Teresina, PI' },
+        { nome: 'Anderson Barros',     cidade: 'Campo Grande, MS' },
+        { nome: 'Marcos Nascimento',   cidade: 'Cuiabá, MT' },
+        { nome: 'Paulo Monteiro',      cidade: 'Porto Velho, RO' },
+        { nome: 'Maria Aparecida Cruz', cidade: 'Campinas, SP' },
+        { nome: 'Josiane Cardoso',     cidade: 'São Luís, MA' },
+        { nome: 'Simone Teixeira',     cidade: 'Vitória, ES' },
+        { nome: 'Cristiane Moreira',   cidade: 'Santos, SP' },
+        { nome: 'Adriana Araújo',      cidade: 'Uberlândia, MG' },
+        { nome: 'Leonardo Pinto',      cidade: 'Londrina, PR' },
+        { nome: 'Flávia Nunes',        cidade: 'Joinville, SC' },
+        { nome: 'Edilson Batista',     cidade: 'Aracaju, SE' },
+        { nome: 'Rosangela Medeiros',  cidade: 'Mossoró, RN' },
+        { nome: 'Neide Cavalcante',    cidade: 'Campina Grande, PB' },
+        { nome: 'Vera Lúcia Dias',     cidade: 'Feira de Santana, BA' },
+        { nome: 'Ruth Fernandes',      cidade: 'Ribeirão Preto, SP' },
+        { nome: 'Solange Ramos',       cidade: 'São Bernardo, SP' },
+        { nome: 'Noemia Vieira',       cidade: 'Petrópolis, RJ' },
+        { nome: 'Geovana Rocha',       cidade: 'Montes Claros, MG' },
+        { nome: 'Tânia Correia',       cidade: 'Caxias do Sul, RS' },
+        { nome: 'Marta Cunha',         cidade: 'Blumenau, SC' },
+        { nome: 'Elizabete Borges',    cidade: 'Juiz de Fora, MG' },
+        { nome: 'Daniel Assis',        cidade: 'Maringá, PR' },
+        { nome: 'Conceição Azevedo',   cidade: 'Guarulhos, SP' },
+        { nome: 'Sandra Moura',        cidade: 'São José dos Campos, SP' },
+        { nome: 'Lucas Campos',        cidade: 'Belford Roxo, RJ' },
+        { nome: 'Dalva Cardoso',       cidade: 'Aparecida de Goiânia, GO' },
+        { nome: 'Suzana Andrade',      cidade: 'Caruaru, PE' },
+        { nome: 'Mônica Gonçalves',    cidade: 'Caucaia, CE' },
+        { nome: 'Iara Macedo',         cidade: 'Anápolis, GO' },
+        { nome: 'Neuza Pacheco',       cidade: 'Pelotas, RS' },
+        { nome: 'Cintia Barbosa',      cidade: 'Contagem, MG' },
+        { nome: 'Edilma Xavier',       cidade: 'Diadema, SP' },
+        { nome: 'Diego Queiroz',       cidade: 'Olinda, PE' },
+      ];
+
+      const intervalos = [12000, 20000, 23000];
+      const notif    = document.getElementById('compra-notif');
+      const elNome   = document.getElementById('notif-nome');
+      const elCidade = document.getElementById('notif-cidade');
+      const btnFechar = notif.querySelector('.notif-fechar');
+      let fila = [], idx = 0, tOcultar, tProximo;
+
+      function embaralhar(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function proximoIntervalo() {
+        return intervalos[Math.floor(Math.random() * intervalos.length)];
+      }
+
+      function ocultar() {
+        notif.classList.remove('show');
+      }
+
+      function mostrar() {
+        if (idx >= fila.length) { fila = embaralhar(compradores); idx = 0; }
+        const { nome, cidade } = fila[idx++];
+        elNome.textContent   = nome;
+        elCidade.textContent = cidade;
+        notif.classList.add('show');
+        clearTimeout(tOcultar);
+        tOcultar = setTimeout(() => {
+          ocultar();
+          tProximo = setTimeout(mostrar, proximoIntervalo());
+        }, 5000);
+      }
+
+      btnFechar.addEventListener('click', () => {
+        ocultar();
+        clearTimeout(tOcultar);
+        tProximo = setTimeout(mostrar, proximoIntervalo());
+      });
+
+      fila = embaralhar(compradores);
+      tProximo = setTimeout(mostrar, 10000);
+    })();
+
     // Fade-in com IntersectionObserver e stagger
     const fadeEls = document.querySelectorAll('.fade-in');
     const io = new IntersectionObserver((entries) => {
