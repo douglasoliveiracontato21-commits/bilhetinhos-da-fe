@@ -615,8 +615,46 @@
     .depo-text { font-size: 15px; line-height: 1.75; font-style: italic; flex: 1; }
     .depo-divider { border: none; border-top: 1px solid var(--cream-border); }
     .depo-footer { display: flex; align-items: center; gap: 12px; }
+    .depo-foto {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--cream-border);
+      display: block;
+    }
     .depo-name { font-weight: 700; font-size: 14px; }
     .depo-city { font-size: 12px; color: var(--brown-mid); font-weight: 300; }
+
+    /* Card do grupo — full width */
+    .depo-card-grupo {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      background: var(--gold-light);
+      border: 1px solid var(--cream-border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-top: 24px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: var(--shadow-warm);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .depo-card-grupo:hover {
+      box-shadow: var(--shadow-warm-lg);
+      transform: translateY(-3px);
+    }
+    .depo-grupo-foto {
+      width: 280px;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .depo-grupo-body { flex: 1; display: flex; flex-direction: column; gap: 14px; }
 
     /* ===== 11. GARANTIA ===== */
     #garantia {
@@ -784,6 +822,8 @@
       .passo { align-items: flex-start; text-align: left; padding: 0; }
       .preco-grid { grid-template-columns: 1fr; }
       .depo-grid { grid-template-columns: 1fr; }
+      .depo-card-grupo { flex-direction: column; gap: 20px; padding: 24px 20px; }
+      .depo-grupo-foto { width: 100%; height: 160px; }
       .cta-final-title { font-size: 28px; }
       .proposito-grid { grid-template-columns: 1fr; }
       .proposito-title { font-size: 28px; }
@@ -1118,6 +1158,7 @@
           <p class="depo-text">"Distribuí os bilhetinhos bíblicos na escola dominical e as crianças ficaram encantadas. Cada uma queria mostrar pra mãe como abria em 3D. Foi impossível não se emocionar vendo a reação delas."</p>
           <hr class="depo-divider">
           <div class="depo-footer">
+            <img src="depoimento-fernanda.png" alt="Fernanda Almeida" class="depo-foto">
             <div>
               <div class="depo-name">Fernanda Almeida</div>
               <div class="depo-city">Porto Alegre, RS</div>
@@ -1130,6 +1171,7 @@
           <p class="depo-text">"Deixei um bilhetinho Mão de Jesus na mesa do meu colega de trabalho sem falar nada. No dia seguinte ele me procurou querendo saber mais sobre Jesus. Nunca imaginei que um papel pudesse abrir uma conversa assim."</p>
           <hr class="depo-divider">
           <div class="depo-footer">
+            <img src="depoimento-marcos.png" alt="Marcos Teixeira" class="depo-foto">
             <div>
               <div class="depo-name">Marcos Teixeira</div>
               <div class="depo-city">Belo Horizonte, MG</div>
@@ -1142,6 +1184,7 @@
           <p class="depo-text">"Usei os bilhetinhos no acampamento de jovens e foi o momento mais marcante do evento. Todo mundo queria levar mais pra casa. Já pedi pra toda a liderança da nossa igreja baixar também."</p>
           <hr class="depo-divider">
           <div class="depo-footer">
+            <img src="depoimento-silvia.png" alt="Pastora Sílvia Rodrigues" class="depo-foto">
             <div>
               <div class="depo-name">Pastora Sílvia Rodrigues</div>
               <div class="depo-city">São Paulo, SP</div>
@@ -1150,6 +1193,22 @@
         </div>
 
       </div>
+
+      <!-- Card do grupo — full width -->
+      <div class="depo-card-grupo fade-in" style="transition-delay:0.3s">
+        <img src="grupo-igreja.png" alt="Comunidade Igreja Bom Pastor" class="depo-grupo-foto">
+        <div class="depo-grupo-body">
+          <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="depo-text" style="font-style:italic; font-size:15px; line-height:1.75">"Levamos os bilhetinhos para distribuir depois do culto e a reação da comunidade foi incrível. Crianças, adultos, idosos — todo mundo ficou encantado. Já viraram tradição aqui na nossa igreja."</p>
+          <div class="depo-footer" style="border-top:1px solid var(--cream-border); padding-top:14px; margin-top:4px">
+            <div>
+              <div class="depo-name">Comunidade Igreja Bom Pastor</div>
+              <div class="depo-city">Curitiba, PR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
